@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body,
 #root {
@@ -22,4 +26,29 @@ body {
     radial-gradient(circle at top, rgba(214, 168, 74, 0.18) 0%, rgba(214, 168, 74, 0) 35%),
     linear-gradient(180deg, #072325 0%, #041819 100%);
   color: #f7f1df;
+}
+
+/* Custom scrollbar for sin history */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(214, 168, 74, 0.3) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(214, 168, 74, 0.3);
+  border-radius: 4px;
+}
+
+/* Focus visible ring for accessibility */
+:focus-visible {
+  outline: 2px solid rgba(214, 168, 74, 0.6);
+  outline-offset: 2px;
 }

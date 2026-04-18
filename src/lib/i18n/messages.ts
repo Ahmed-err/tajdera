@@ -10,8 +10,10 @@ type MessageSet = {
   shameMeter: string
   sinLogger: string
   amount: string
+  amountPlaceholder: string
   category: string
   excuse: string
+  excusePlaceholder: string
   saveSin: string
   noHistory: string
   sinHistory: string
@@ -20,12 +22,23 @@ type MessageSet = {
   dailyAllowance: string
   monthlyBudget: string
   roastIntensity: string
+  roastIntensityLabels: [string, string, string]
   reset: string
   mujamalatDuty: string
   mujamalatNote: string
   shareRoast: string
   copied: string
   statusTitle: string
+  sinCount: string
+  deleteSin: string
+  deleteConfirm: string
+  resetConfirm: string
+  confirmYes: string
+  confirmNo: string
+  sinAdded: string
+  errorAmount: string
+  errorAmountMax: string
+  currency: string
   tiers: Record<RoastTier, string>
   statuses: Record<SocialStatus, string>
   statusSubtitle: Record<SocialStatus, string>
@@ -40,22 +53,35 @@ export const messages: MessageSet = {
   shameMeter: 'عداد الفلس',
   sinLogger: 'دفتر الذنوب',
   amount: 'كم صرفت؟',
+  amountPlaceholder: 'أدخل المبلغ بالجنيه السوداني',
   category: 'نوع الجريمة',
   excuse: 'العذر الشين',
+  excusePlaceholder: 'اكتب عذرك هنا... (اختياري)',
   saveSin: 'أضف الذنب',
-  noHistory: 'لسه سجلّك نظيف',
+  noHistory: 'لسه سجلّك نظيف — ما صرفت شي!',
   sinHistory: 'الفضائح الأخيرة',
   roastNow: 'روستة الليلة',
-  morningRoast: 'تحية الصباح',
+  morningRoast: 'تحية اليوم',
   dailyAllowance: 'مسموح تصرف اليوم',
   monthlyBudget: 'حدد سقف الشهر',
   roastIntensity: 'قوة الكلام',
+  roastIntensityLabels: ['خفيف', 'متوسط', 'قوي'],
   reset: 'صفّر الحساب',
   mujamalatDuty: 'دي مجاملة واجبة',
   mujamalatNote: 'واجب طبعاً، بس جيبك ما بواجب معاك',
   shareRoast: 'شارك الروستة',
-  copied: 'تم النسخ',
+  copied: '✓ تم النسخ',
   statusTitle: 'الحالة الاجتماعية للجيب',
+  sinCount: 'ذنب',
+  deleteSin: 'حذف',
+  deleteConfirm: 'تحذف الذنب ده؟',
+  resetConfirm: 'تصفّر كل الحساب؟ الفضائح كلها حتطير!',
+  confirmYes: 'آه، امسح',
+  confirmNo: 'لا، استنّي',
+  sinAdded: '✓ تسجّل الذنب',
+  errorAmount: 'لازم تكتب مبلغ صحيح أكبر من صفر',
+  errorAmountMax: 'المبلغ كبير جداً يا زول!',
+  currency: 'ج.س',
   tiers: {
     safe: 'ماشي الحال',
     warning: 'أدب روحك',

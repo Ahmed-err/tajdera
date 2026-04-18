@@ -7,28 +7,14 @@ import { loadState, resetState, saveState } from '../lib/storage/localStorageRep
 import type { PersistedState, SinEntry, SpendingCategory } from '../types/budget'
 
 const createId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+
 const isWeekendPeakExpense = (amount: number, monthlyBudget: number): boolean => {
   const day = new Date().getDay()
   const isThursdayOrFriday = day === 4 || day === 5
-  const peakThreshold = monthlyBudget * 0.12
-  return isThursdayOrFriday && amount >= peakThreshold
+  return isThursdayOrFriday && amount >= monthlyBudget * 0.12
 }
 
 function App() {
-  const handleReset = () => {
-    setState(resetState())
-    setLastFlags({ mujamalatDuty: false, weekendPeak: false })
-  }
-
-  const handleShareRoast = async (text: string): Promise<boolean> => {
-    try {
-      await navigator.clipboard.writeText(text)
-      return true
-    } catch {
-      return false
-    }
-  }
-
   const [state, setState] = useState<PersistedState>(() => loadState())
   const [lastFlags, setLastFlags] = useState({ mujamalatDuty: false, weekendPeak: false })
   const [shakeTick, setShakeTick] = useState(0)
@@ -44,6 +30,7 @@ function App() {
 
   const latestCategory = state.sins[0]?.category
   const latestMujamalatDuty = state.sins[0]?.mujamalatDuty ?? false
+
   const roast = useMemo(
     () =>
       pickRoast({
@@ -85,15 +72,35 @@ function App() {
       setShakeTick((prev) => prev + 1)
     }
 
-    setLastFlags({
-      mujamalatDuty,
-      weekendPeak,
-    })
+    setLastFlags({ mujamalatDuty, weekendPeak })
+    setState((prev) => ({ ...prev, sins: [nextSin, ...prev.sins] }))
+  }
 
-    setState((prev) => ({
-      ...prev,
-      sins: [nextSin, ...prev.sins],
-    }))
+  const handleDeleteSin = (id: string) => {
+    setState((prev) => ({ ...prev, sins: prev.sins.filter((s) => s.id !== id) }))
+  }
+
+  const handleReset = () => {
+    setState(resetState())
+    setLastFlags({ mujamalatDuty: false, weekendPeak: false })
+  }
+
+  const handleShareRoast = async (text: string): Promise<boolean> => {
+    try {
+      if (navigator.share) {
+        await navigator.share({ text })
+        return true
+      }
+      await navigator.clipboard.writeText(text)
+      return true
+    } catch {
+      try {
+        await navigator.clipboard.writeText(text)
+        return true
+      } catch {
+        return false
+      }
+    }
   }
 
   return (
@@ -115,15 +122,10 @@ function App() {
           }))
         }
         onIntensityChange={(roastIntensity) =>
-          setState((prev) => ({
-            ...prev,
-            config: {
-              ...prev.config,
-              roastIntensity,
-            },
-          }))
+          setState((prev) => ({ ...prev, config: { ...prev.config, roastIntensity } }))
         }
         onReset={handleReset}
+        onDeleteSin={handleDeleteSin}
         onLogSin={handleLogSin}
         onShareRoast={handleShareRoast}
       />

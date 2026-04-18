@@ -4,97 +4,56 @@
   "tone": "Sudanese passive-aggressive uncle",
   "tiers": {
     "safe": [
-      {
-        "id": "safe-1",
-        "text": "يا زول أهبش القروش براحة، لسه الشهر في أولو.",
-        "intensity": 1
-      },
-      {
-        "id": "safe-2",
-        "text": "الميزانية دي ما ورثتها من جدك، خف علينا شوية.",
-        "intensity": 1
-      },
-      {
-        "id": "safe-3",
-        "text": "كل يوم زيادة؟ كأنك فاتح بوفيه على حسابك.",
-        "intensity": 1,
-        "categoryHint": "zayada"
-      },
-      {
-        "id": "safe-4",
-        "text": "المشاوير دي كلها ضرورية ولا سايق نفسيتك؟",
-        "intensity": 1,
-        "categoryHint": "mushwar"
-      }
+      { "id": "safe-1", "text": "يا زول أهبش القروش براحة، لسه الشهر في أولو.", "intensity": 1 },
+      { "id": "safe-2", "text": "الميزانية دي ما ورثتها من جدك، خف علينا شوية.", "intensity": 1 },
+      { "id": "safe-3", "text": "كل يوم زيادة؟ كأنك فاتح بوفيه على حسابك.", "intensity": 1, "categoryHint": "zayada" },
+      { "id": "safe-4", "text": "المشاوير دي كلها ضرورية ولا سايق نفسيتك؟", "intensity": 1, "categoryHint": "mushwar" },
+      { "id": "safe-5", "text": "المصروف تمام، بس الغياب عن الفلوس ده ما توب.", "intensity": 1 },
+      { "id": "safe-6", "text": "لسه كويس يا زول، بس لا تتمادى قبل نهاية الشهر.", "intensity": 1 },
+      { "id": "safe-7", "text": "الحساب مشّال لحد ساعة، بكرة لا نشوف نفسنا بنستعين.", "intensity": 1 },
+      { "id": "safe-8", "text": "البداية كويسة، بس الشهر طويل زي قائمة مجاملاتك.", "intensity": 1 },
+      { "id": "safe-9", "text": "اتكل على الله وقلل من الزيادة يا صاحبي.", "intensity": 1, "categoryHint": "zayada" },
+      { "id": "safe-10", "text": "مشوار بعد مشوار، الريال بتاعك حيشيل دبدوبة.", "intensity": 1, "categoryHint": "mushwar" },
+      { "id": "safe-11", "text": "المجاملة واجبة، بس جيبك ما عارف كلمة واجب.", "intensity": 1, "categoryHint": "mujamalat" }
     ],
     "warning": [
-      {
-        "id": "warning-1",
-        "text": "مجاملة بعد مجاملة... شكلك حتعرس الناس كلهم.",
-        "intensity": 2,
-        "categoryHint": "mujamalat"
-      },
-      {
-        "id": "warning-2",
-        "text": "نص الميزانية طارت، ولسه بتقول الأمور تحت السيطرة؟",
-        "intensity": 2
-      },
-      {
-        "id": "warning-3",
-        "text": "جيبك قال لي خلاص، وإنت لسه بتفاوضو.",
-        "intensity": 2
-      },
-      {
-        "id": "warning-4",
-        "text": "الزيادة بقت اشتراك شهري ولا شنو؟",
-        "intensity": 2,
-        "categoryHint": "zayada"
-      }
+      { "id": "warning-1", "text": "مجاملة بعد مجاملة... شكلك حتعرس الناس كلهم.", "intensity": 2, "categoryHint": "mujamalat" },
+      { "id": "warning-2", "text": "نص الميزانية طارت، ولسه بتقول الأمور تحت السيطرة؟", "intensity": 2 },
+      { "id": "warning-3", "text": "جيبك قال لي خلاص، وإنت لسه بتفاوضو.", "intensity": 2 },
+      { "id": "warning-4", "text": "الزيادة بقت اشتراك شهري ولا شنو؟", "intensity": 2, "categoryHint": "zayada" },
+      { "id": "warning-5", "text": "نص الشهر ما اجا والنص التاني من الفلوس مشى.", "intensity": 2 },
+      { "id": "warning-6", "text": "يا زول لو كلمة الاقتصاد دي ما في قاموسك، اشتري قاموس.", "intensity": 2 },
+      { "id": "warning-7", "text": "الشهر ما خلص وجيبك بدأ يبكي بالصوت.", "intensity": 2 },
+      { "id": "warning-8", "text": "كل المشاوير دي ضرورية ولا بس تمشية وقت؟", "intensity": 2, "categoryHint": "mushwar" },
+      { "id": "warning-9", "text": "نص ميزانيتك راحت، والشهر لسه بتاخد نفس.", "intensity": 2 },
+      { "id": "warning-10", "text": "الصرف ده كأنك بتستعجل على الحديدة.", "intensity": 2 },
+      { "id": "warning-11", "text": "لو الميزانية عندها لسان كانت قالت لك وداعاً.", "intensity": 2 }
     ],
     "danger": [
-      {
-        "id": "danger-1",
-        "text": "قربت التسعين، جيبك بقى يعمل صوت استغاثة.",
-        "intensity": 3
-      },
-      {
-        "id": "danger-2",
-        "text": "خلاص قربت تشحد؟ ولا لسه عندك خطة إنكار؟",
-        "intensity": 3
-      },
-      {
-        "id": "danger-3",
-        "text": "الميزانية دي بقت ذكرى جميلة، زي أول مرتب.",
-        "intensity": 3
-      },
-      {
-        "id": "danger-4",
-        "text": "لو دا صرف مشوار، السفر الحقيقي حيعمل فيك شنو؟",
-        "intensity": 3,
-        "categoryHint": "mushwar"
-      }
+      { "id": "danger-1", "text": "قربت التسعين، جيبك بقى يعمل صوت استغاثة.", "intensity": 3 },
+      { "id": "danger-2", "text": "خلاص قربت تشحد؟ ولا لسه عندك خطة إنكار؟", "intensity": 3 },
+      { "id": "danger-3", "text": "الميزانية دي بقت ذكرى جميلة، زي أول مرتب.", "intensity": 3 },
+      { "id": "danger-4", "text": "لو دا صرف مشوار، السفر الحقيقي حيعمل فيك شنو؟", "intensity": 3, "categoryHint": "mushwar" },
+      { "id": "danger-5", "text": "يا أخي آخر الشهر حتفطر هم ولا في حاجة تانية؟", "intensity": 3 },
+      { "id": "danger-6", "text": "الحساب ده بقى مأساة، مش ميزانية.", "intensity": 3 },
+      { "id": "danger-7", "text": "أكيد في ناس بتتكل عليك، وبكرة حتتكل على مين؟", "intensity": 3, "categoryHint": "mujamalat" },
+      { "id": "danger-8", "text": "الفلوس بتطير زي عصافير الدوري من إيدك.", "intensity": 3 },
+      { "id": "danger-9", "text": "تسعين بالمية خلصت، والشهر ما خلص. حساب يا زول!", "intensity": 3 },
+      { "id": "danger-10", "text": "الزيادة والمشاوير كمّلا عليك، وأنت لسه شايل الإيصال.", "intensity": 3 },
+      { "id": "danger-11", "text": "قريب جداً من الحديدة، استعد تشيل فانوس.", "intensity": 3 }
     ],
     "bankrupt": [
-      {
-        "id": "bankrupt-1",
-        "text": "مبروك، رسمياً بقيت على الحديدة. أرحم نفسك ياخ!",
-        "intensity": 3
-      },
-      {
-        "id": "bankrupt-2",
-        "text": "الصرف دا لو استمر، آخر الشهر حتفطر مويّة ساي.",
-        "intensity": 3
-      },
-      {
-        "id": "bankrupt-3",
-        "text": "الحساب قال لي سلّم عليك وقال ما قادر يكمل.",
-        "intensity": 3
-      },
-      {
-        "id": "bankrupt-4",
-        "text": "باقي ليك تكتب إعلان: مطلوب كفيل للميزانية.",
-        "intensity": 3
-      }
+      { "id": "bankrupt-1", "text": "مبروك، رسمياً بقيت على الحديدة. أرحم نفسك ياخ!", "intensity": 3 },
+      { "id": "bankrupt-2", "text": "الصرف دا لو استمر، آخر الشهر حتفطر مويّة ساي.", "intensity": 3 },
+      { "id": "bankrupt-3", "text": "الحساب قال لي سلّم عليك وقال ما قادر يكمل.", "intensity": 3 },
+      { "id": "bankrupt-4", "text": "باقي ليك تكتب إعلان: مطلوب كفيل للميزانية.", "intensity": 3 },
+      { "id": "bankrupt-5", "text": "خلّصت الفلوس وخلّصت الأعذار معاها.", "intensity": 3 },
+      { "id": "bankrupt-6", "text": "كمّلت على الميزانية، والميزانية دعت ليك بالهداية.", "intensity": 3 },
+      { "id": "bankrupt-7", "text": "الجيب بقى صحراء يا زول، والراتب الجاي في الأفق البعيد.", "intensity": 3 },
+      { "id": "bankrupt-8", "text": "ما في فلوس؟ في وقت الراحة نفكر في الفلوس الجاية.", "intensity": 3 },
+      { "id": "bankrupt-9", "text": "الميزانية انتهت والشهر ما انتهى. دي أزمة مش ميزانية!", "intensity": 3 },
+      { "id": "bankrupt-10", "text": "لو الأرقام دي صح، لازم تحكي قصتك لبرنامج مالي.", "intensity": 3 },
+      { "id": "bankrupt-11", "text": "يا زول ربنا يعين، الحساب صفر وأيام كتيرة لحدي الراتب.", "intensity": 3 }
     ]
   }
 }
