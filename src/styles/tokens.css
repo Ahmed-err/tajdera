@@ -1,0 +1,9 @@
+:root {
+  --font-arabic: 'Tajawal', 'Cairo', system-ui, sans-serif;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --ring-ok: #22c55e;
+  --ring-warning: #f59e0b;
+  --ring-danger: #f97316;
+  --ring-bankrupt: #f43f5e;
+}

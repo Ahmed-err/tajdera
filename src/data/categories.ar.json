@@ -1,0 +1,22 @@
+[
+  {
+    "id": "zayada",
+    "label": "زيادة اليوم",
+    "icon": "☕"
+  },
+  {
+    "id": "mushwar",
+    "label": "مشوار ساي",
+    "icon": "🛺"
+  },
+  {
+    "id": "mujamalat",
+    "label": "مجاملات القبيلة",
+    "icon": "🎁"
+  },
+  {
+    "id": "other",
+    "label": "صرف ساي",
+    "icon": "🧳"
+  }
+]

@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "locale": "ar-SD",
+  "tone": "Sudanese passive-aggressive uncle",
+  "tiers": {
+    "safe": [
+      {
+        "id": "safe-1",
+        "text": "يا زول أهبش القروش براحة، لسه الشهر في أولو.",
+        "intensity": 1
+      },
+      {
+        "id": "safe-2",
+        "text": "الميزانية دي ما ورثتها من جدك، خف علينا شوية.",
+        "intensity": 1
+      },
+      {
+        "id": "safe-3",
+        "text": "كل يوم زيادة؟ كأنك فاتح بوفيه على حسابك.",
+        "intensity": 1,
+        "categoryHint": "zayada"
+      },
+      {
+        "id": "safe-4",
+        "text": "المشاوير دي كلها ضرورية ولا سايق نفسيتك؟",
+        "intensity": 1,
+        "categoryHint": "mushwar"
+      }
+    ],
+    "warning": [
+      {
+        "id": "warning-1",
+        "text": "مجاملة بعد مجاملة... شكلك حتعرس الناس كلهم.",
+        "intensity": 2,
+        "categoryHint": "mujamalat"
+      },
+      {
+        "id": "warning-2",
+        "text": "نص الميزانية طارت، ولسه بتقول الأمور تحت السيطرة؟",
+        "intensity": 2
+      },
+      {
+        "id": "warning-3",
+        "text": "جيبك قال لي خلاص، وإنت لسه بتفاوضو.",
+        "intensity": 2
+      },
+      {
+        "id": "warning-4",
+        "text": "الزيادة بقت اشتراك شهري ولا شنو؟",
+        "intensity": 2,
+        "categoryHint": "zayada"
+      }
+    ],
+    "danger": [
+      {
+        "id": "danger-1",
+        "text": "قربت التسعين، جيبك بقى يعمل صوت استغاثة.",
+        "intensity": 3
+      },
+      {
+        "id": "danger-2",
+        "text": "خلاص قربت تشحد؟ ولا لسه عندك خطة إنكار؟",
+        "intensity": 3
+      },
+      {
+        "id": "danger-3",
+        "text": "الميزانية دي بقت ذكرى جميلة، زي أول مرتب.",
+        "intensity": 3
+      },
+      {
+        "id": "danger-4",
+        "text": "لو دا صرف مشوار، السفر الحقيقي حيعمل فيك شنو؟",
+        "intensity": 3,
+        "categoryHint": "mushwar"
+      }
+    ],
+    "bankrupt": [
+      {
+        "id": "bankrupt-1",
+        "text": "مبروك، رسمياً بقيت على الحديدة. أرحم نفسك ياخ!",
+        "intensity": 3
+      },
+      {
+        "id": "bankrupt-2",
+        "text": "الصرف دا لو استمر، آخر الشهر حتفطر مويّة ساي.",
+        "intensity": 3
+      },
+      {
+        "id": "bankrupt-3",
+        "text": "الحساب قال لي سلّم عليك وقال ما قادر يكمل.",
+        "intensity": 3
+      },
+      {
+        "id": "bankrupt-4",
+        "text": "باقي ليك تكتب إعلان: مطلوب كفيل للميزانية.",
+        "intensity": 3
+      }
+    ]
+  }
+}
