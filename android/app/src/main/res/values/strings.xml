@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Girishatk</string>
+    <string name="title_activity_main">Girishatk</string>
+    <string name="package_name">com.sarmadax.girishatk</string>
+    <string name="custom_url_scheme">com.sarmadax.girishatk</string>
+</resources>

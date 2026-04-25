@@ -2,7 +2,7 @@
   "name": "قريشاتك Girishak",
   "short_name": "قريشاتك",
   "description": "متعقب ميزانية ساخر بلهجة سودانية",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#041819",
   "theme_color": "#072325",

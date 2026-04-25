@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import type { SpendingCategory } from '../../../types/budget'
 import { getCategoryMeta } from '../../../lib/i18n/messages'
+import { haptic } from '../../../lib/haptics'
 
 interface SinLoggerFormProps {
   amountLabel: string
@@ -60,14 +61,17 @@ export const SinLoggerForm = ({
     const parsedAmount = Number(amount)
 
     if (!parsedAmount || parsedAmount <= 0 || !Number.isFinite(parsedAmount)) {
+      void haptic.error()
       setAmountError(errorAmount)
       return
     }
     if (parsedAmount > MAX_AMOUNT) {
+      void haptic.error()
       setAmountError(errorAmountMax)
       return
     }
 
+    void haptic.success()
     onSubmit({
       amount: parsedAmount,
       category,
@@ -90,7 +94,7 @@ export const SinLoggerForm = ({
         <label className="mb-2 block text-sm text-textMuted">{amountLabel}</label>
         <div className="relative">
           <input
-            className={`w-full rounded-[var(--radius-md)] border bg-panelSoft px-3 py-2 text-right text-text outline-none ring-accent/50 transition focus:ring-2 ${
+            className={`w-full rounded-[var(--radius-md)] border bg-panelSoft px-3 py-3 text-right text-text outline-none ring-accent/50 transition focus:ring-2 ${
               amountError ? 'border-danger/70' : 'border-white/10'
             }`}
             type="number"
@@ -124,7 +128,7 @@ export const SinLoggerForm = ({
       <div>
         <label className="mb-2 block text-sm text-textMuted">{categoryLabel}</label>
         <select
-          className="w-full rounded-[var(--radius-md)] border border-white/10 bg-panelSoft px-3 py-2 text-right text-text outline-none ring-accent/50 transition focus:ring-2"
+          className="w-full rounded-[var(--radius-md)] border border-white/10 bg-panelSoft px-3 py-3 text-right text-text outline-none ring-accent/50 transition focus:ring-2"
           value={category}
           onChange={(e) => setCategory(e.target.value as SpendingCategory)}
         >
@@ -164,7 +168,7 @@ export const SinLoggerForm = ({
           </span>
         </div>
         <textarea
-          className="h-20 w-full resize-none rounded-[var(--radius-md)] border border-white/10 bg-panelSoft px-3 py-2 text-right text-text outline-none ring-accent/50 transition focus:ring-2"
+          className="h-20 w-full resize-none rounded-[var(--radius-md)] border border-white/10 bg-panelSoft px-3 py-3 text-right text-text outline-none ring-accent/50 transition focus:ring-2"
           value={excuse}
           maxLength={MAX_EXCUSE_LEN}
           onChange={(e) => setExcuse(e.target.value)}
@@ -175,7 +179,7 @@ export const SinLoggerForm = ({
       <div className="flex items-center gap-3">
         <button
           type="submit"
-          className="flex-1 rounded-[var(--radius-md)] bg-accent px-4 py-2 font-bold text-white transition hover:brightness-110 active:scale-95"
+          className="flex-1 rounded-[var(--radius-md)] bg-accent px-4 py-3 font-bold text-white transition hover:brightness-110 active:opacity-75"
         >
           {submitLabel}
         </button>

@@ -8,6 +8,7 @@ import { SinHistoryList } from '../sins/components/SinHistoryList'
 import { SinLoggerForm } from '../sins/components/SinLoggerForm'
 import type { RoastLine, SinEntry, SpendingCategory } from '../../types/budget'
 import { messages } from '../../lib/i18n/messages'
+import { haptic } from '../../lib/haptics'
 
 interface DashboardPageProps {
   monthlyBudget: number
@@ -64,14 +65,25 @@ export const DashboardPage = ({
     void animate(scope.current, { x: [0, -6, 6, -4, 4, 0] }, { duration: 0.42, ease: 'linear' })
   }, [animate, scope, shakeTick])
 
+  useEffect(() => {
+    if (!showResetConfirm) return
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowResetConfirm(false)
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [showResetConfirm])
+
   const shareRoast = async (text: string): Promise<boolean> => {
     const didCopy = await onShareRoast(text)
+    void (didCopy ? haptic.success() : haptic.error())
     setCopyFeedback(didCopy ? m.copied : 'ما قدرنا ننسخ الرسالة')
     setTimeout(() => setCopyFeedback(''), 2000)
     return didCopy
   }
 
   const handleReset = () => {
+    void haptic.heavy()
     setShowResetConfirm(false)
     onReset()
   }
@@ -194,7 +206,7 @@ export const DashboardPage = ({
                 max={1_000_000_000}
                 value={monthlyBudget}
                 onChange={(e) => onBudgetChange(Number(e.target.value))}
-                className="w-full rounded-[var(--radius-md)] border border-white/10 bg-panelSoft px-3 py-2 text-right outline-none focus:ring-2 focus:ring-accent/50"
+                className="w-full rounded-[var(--radius-md)] border border-white/10 bg-panelSoft px-3 py-3 text-right outline-none focus:ring-2 focus:ring-accent/50"
               />
               <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-textMuted">
                 ج.س
@@ -217,6 +229,11 @@ export const DashboardPage = ({
               value={roastIntensity}
               onChange={(e) => onIntensityChange(Number(e.target.value) as 1 | 2 | 3)}
               className="w-full accent-accent"
+              aria-label={m.roastIntensity}
+              aria-valuemin={1}
+              aria-valuemax={3}
+              aria-valuenow={roastIntensity}
+              aria-valuetext={m.roastIntensityLabels[roastIntensity - 1]}
             />
             <div className="mt-1 flex justify-between text-xs text-textMuted/60">
               {m.roastIntensityLabels.map((l) => <span key={l}>{l}</span>)}
@@ -225,7 +242,7 @@ export const DashboardPage = ({
 
           <button
             onClick={() => setShowResetConfirm(true)}
-            className="w-full rounded-[var(--radius-md)] border border-danger/60 bg-danger/10 px-4 py-2 text-sm font-bold text-danger transition hover:bg-danger/20 active:scale-95"
+            className="w-full rounded-[var(--radius-md)] border border-danger/60 bg-danger/10 px-4 py-3 text-sm font-bold text-danger transition hover:bg-danger/20 active:opacity-75"
           >
             {m.reset}
           </button>
@@ -268,6 +285,9 @@ export const DashboardPage = ({
           emptyLabel={m.noHistory}
           sinCountLabel={m.sinCount}
           deleteLabel={m.deleteSin}
+          deleteConfirmLabel={m.deleteConfirm}
+          confirmYes={m.confirmYes}
+          confirmNo={m.confirmNo}
           sins={sins}
           onDelete={onDeleteSin}
         />
@@ -296,13 +316,13 @@ export const DashboardPage = ({
               <div className="flex gap-3">
                 <button
                   onClick={() => setShowResetConfirm(false)}
-                  className="flex-1 rounded-[var(--radius-md)] border border-white/20 px-4 py-2 text-sm font-semibold text-textMuted transition hover:bg-white/10"
+                  className="flex-1 rounded-[var(--radius-md)] border border-white/20 px-4 py-3 text-sm font-semibold text-textMuted transition hover:bg-white/10"
                 >
                   {m.confirmNo}
                 </button>
                 <button
                   onClick={handleReset}
-                  className="flex-1 rounded-[var(--radius-md)] bg-danger px-4 py-2 text-sm font-bold text-white transition hover:brightness-110 active:scale-95"
+                  className="flex-1 rounded-[var(--radius-md)] bg-danger px-4 py-3 text-sm font-bold text-white transition hover:brightness-110 active:opacity-75"
                 >
                   {m.confirmYes}
                 </button>

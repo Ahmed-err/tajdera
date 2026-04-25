@@ -1,12 +1,17 @@
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { SinEntry } from '../../../types/budget'
 import { getCategoryMeta, messages } from '../../../lib/i18n/messages'
+import { haptic } from '../../../lib/haptics'
 
 interface SinHistoryListProps {
   title: string
   emptyLabel: string
   sinCountLabel: string
   deleteLabel: string
+  deleteConfirmLabel: string
+  confirmYes: string
+  confirmNo: string
   sins: SinEntry[]
   onDelete: (id: string) => void
 }
@@ -33,7 +38,35 @@ const formatDate = (iso: string): string => {
   }
 }
 
-export const SinHistoryList = ({ title, emptyLabel, sinCountLabel, deleteLabel, sins, onDelete }: SinHistoryListProps) => {
+export const SinHistoryList = ({
+  title,
+  emptyLabel,
+  sinCountLabel,
+  deleteLabel,
+  deleteConfirmLabel,
+  confirmYes,
+  confirmNo,
+  sins,
+  onDelete,
+}: SinHistoryListProps) => {
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null)
+
+  const handleDeleteClick = (id: string) => {
+    void haptic.light()
+    setPendingDeleteId(id)
+  }
+
+  const handleConfirmDelete = (id: string) => {
+    void haptic.heavy()
+    setPendingDeleteId(null)
+    onDelete(id)
+  }
+
+  const handleCancelDelete = () => {
+    void haptic.light()
+    setPendingDeleteId(null)
+  }
+
   return (
     <section className="rounded-[var(--radius-lg)] bg-panel p-5 shadow-luxe">
       <div className="mb-4 flex items-center justify-between gap-2">
@@ -47,14 +80,15 @@ export const SinHistoryList = ({ title, emptyLabel, sinCountLabel, deleteLabel, 
 
       {sins.length === 0 ? (
         <div className="flex flex-col items-center gap-2 py-6 text-center">
-          <span className="text-3xl">🌟</span>
+          <span className="text-3xl" role="img" aria-label="نجمة">🌟</span>
           <p className="text-sm text-textMuted">{emptyLabel}</p>
         </div>
       ) : (
-        <ul className="max-h-[420px] space-y-2 overflow-y-auto pr-1 scrollbar-thin">
+        <ul className="max-h-[260px] space-y-2 overflow-y-auto pr-1 scrollbar-thin md:max-h-[420px]">
           <AnimatePresence initial={false}>
             {sins.map((sin) => {
               const meta = getCategoryMeta(sin.category)
+              const isPending = pendingDeleteId === sin.id
               return (
                 <motion.li
                   key={sin.id}
@@ -71,7 +105,7 @@ export const SinHistoryList = ({ title, emptyLabel, sinCountLabel, deleteLabel, 
                         <span className="text-sm text-textMuted">
                           {meta.icon} {meta.label}
                         </span>
-                        <span className="font-bold text-danger whitespace-nowrap">
+                        <span className="whitespace-nowrap font-bold text-danger">
                           {formatMoney(sin.amount)} ج.س
                         </span>
                       </div>
@@ -83,15 +117,39 @@ export const SinHistoryList = ({ title, emptyLabel, sinCountLabel, deleteLabel, 
                       )}
                       <p className="mt-1 text-xs text-textMuted/50">{formatDate(sin.createdAt)}</p>
                     </div>
-                    <button
-                      onClick={() => onDelete(sin.id)}
-                      title={deleteLabel}
-                      aria-label={deleteLabel}
-                      className="flex-shrink-0 rounded-md px-2 py-1 text-xs text-textMuted/40 transition hover:bg-danger/20 hover:text-danger"
-                    >
-                      ✕
-                    </button>
+
+                    <div className="flex flex-shrink-0 items-center gap-1">
+                      {isPending ? (
+                        <>
+                          <button
+                            onClick={handleCancelDelete}
+                            className="min-h-[44px] min-w-[44px] rounded-lg px-2 text-xs font-semibold text-textMuted transition hover:bg-white/10"
+                          >
+                            {confirmNo}
+                          </button>
+                          <button
+                            onClick={() => handleConfirmDelete(sin.id)}
+                            className="min-h-[44px] min-w-[44px] rounded-lg bg-danger/20 px-2 text-xs font-bold text-danger transition hover:bg-danger/30"
+                          >
+                            {confirmYes}
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          onClick={() => handleDeleteClick(sin.id)}
+                          title={deleteLabel}
+                          aria-label={deleteLabel}
+                          className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-textMuted/40 transition hover:bg-danger/20 hover:text-danger"
+                        >
+                          ✕
+                        </button>
+                      )}
+                    </div>
                   </div>
+
+                  {isPending && (
+                    <p className="mt-2 text-center text-xs font-semibold text-danger">{deleteConfirmLabel}</p>
+                  )}
                 </motion.li>
               )
             })}

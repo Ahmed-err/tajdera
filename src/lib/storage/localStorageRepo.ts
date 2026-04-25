@@ -1,3 +1,4 @@
+import { Preferences } from '@capacitor/preferences'
 import type { PersistedState, SinEntry } from '../../types/budget'
 
 const STORAGE_KEY = 'girishak-state-v1'
@@ -31,11 +32,11 @@ const sanitizeSin = (raw: unknown): SinEntry | null => {
   }
 }
 
-export const loadState = (): PersistedState => {
+export const loadState = async (): Promise<PersistedState> => {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return defaultState
-    const parsed = JSON.parse(raw) as PersistedState
+    const { value } = await Preferences.get({ key: STORAGE_KEY })
+    if (!value) return defaultState
+    const parsed = JSON.parse(value) as PersistedState
     if (parsed?.version !== 1) return defaultState
 
     const intensity = Number(parsed?.config?.roastIntensity)
@@ -57,17 +58,17 @@ export const loadState = (): PersistedState => {
   }
 }
 
-export const saveState = (state: PersistedState): void => {
+export const saveState = async (state: PersistedState): Promise<void> => {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
+    await Preferences.set({ key: STORAGE_KEY, value: JSON.stringify(state) })
   } catch {
-    // localStorage full or unavailable — silently ignore
+    // storage unavailable — silently ignore
   }
 }
 
-export const resetState = (): PersistedState => {
+export const resetState = async (): Promise<PersistedState> => {
   try {
-    localStorage.removeItem(STORAGE_KEY)
+    await Preferences.remove({ key: STORAGE_KEY })
   } catch {
     // ignore
   }
