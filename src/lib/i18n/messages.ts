@@ -80,7 +80,7 @@ export const messages: MessageSet = {
   confirmNo: 'لا ياخ',
   sinAdded: '✓ تسجّل البلوة',
   errorAmount: 'لازم تكتب مبلغ صحيح أكبر من صفر',
-  errorAmountMax: 'المبلغ كبير جداً يا زول!',
+  errorAmountMax: 'المبلغ كبير شديد يا زول!',
   currency: 'ج.س',
   tiers: {
     safe: 'ماشي الحال',
