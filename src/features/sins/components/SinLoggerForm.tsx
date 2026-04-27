@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import type { SpendingCategory } from '../../../types/budget'
 import { getCategoryMeta } from '../../../lib/i18n/messages'
 import { haptic } from '../../../lib/haptics'
+import { BottomSheetSelect } from './BottomSheetSelect'
 
 interface SinLoggerFormProps {
   amountLabel: string
@@ -127,20 +128,14 @@ export const SinLoggerForm = ({
 
       <div>
         <label className="mb-2 block text-sm text-textMuted">{categoryLabel}</label>
-        <select
-          className="w-full rounded-[var(--radius-md)] border border-white/10 bg-panelSoft px-3 py-3 text-right text-text outline-none ring-accent/50 transition focus:ring-2"
+        <BottomSheetSelect
           value={category}
-          onChange={(e) => setCategory(e.target.value as SpendingCategory)}
-        >
-          {categories.map((item) => {
+          onChange={setCategory}
+          options={categories.map((item) => {
             const meta = getCategoryMeta(item)
-            return (
-              <option key={item} value={item}>
-                {meta.icon} {meta.label}
-              </option>
-            )
+            return { value: item, label: `${meta.icon} ${meta.label}` }
           })}
-        </select>
+        />
       </div>
 
       {category === 'mujamalat' && (
