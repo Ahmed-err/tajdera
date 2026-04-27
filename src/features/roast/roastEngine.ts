@@ -9,8 +9,8 @@ const roastData = roasts as RoastData
 
 const randomItem = <T,>(items: T[]): T => items[Math.floor(Math.random() * items.length)]
 
-const MUJAMALAT_DUTY_ROAST = 'واجب طبعاً، بس جيبك ما بواجب معاك'
-const WEEKEND_ROAST = 'الخميس الونيس ضيع قريشاتك، حتأكل شنو يوم الأحد؟'
+const MUJAMALAT_DUTY_ROAST = 'واجب طبعاً، بس جيبك ما بواجب معاك يا زول'
+const WEEKEND_ROAST = 'الخميس الونيس ضيّع قريشاتك — حتاكل شنو يوم الأحد يا مكجور؟'
 
 interface RoastPickOptions {
   tier: RoastTier
