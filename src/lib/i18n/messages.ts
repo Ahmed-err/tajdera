@@ -46,7 +46,7 @@ type MessageSet = {
 
 export const messages: MessageSet = {
   appTitle: 'قريشاتك',
-  appSubtitle: 'عمك الساخر ماسك حسابك قرش قرش',
+  appSubtitle: 'عمك عباس ماسك حسابك قرش قرش',
   budget: 'ميزانية الشهر',
   spent: 'الصرفتو',
   remaining: 'الباقي',
