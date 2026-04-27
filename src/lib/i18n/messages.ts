@@ -51,7 +51,7 @@ export const messages: MessageSet = {
   spent: 'الصرفتو',
   remaining: 'الباقي',
   shameMeter: 'عداد الفلس',
-  sinLogger: 'دفتر الذنوب',
+  sinLogger: 'سجل البلوة',
   amount: 'كم صرفت؟',
   amountPlaceholder: 'أدخل المبلغ بالجنيه السوداني',
   category: 'نوع الجريمة',
