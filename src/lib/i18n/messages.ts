@@ -53,7 +53,7 @@ export const messages: MessageSet = {
   shameMeter: 'عداد الفلس',
   sinLogger: 'سجل الفضائح',
   amount: 'كم صرفت؟',
-  amountPlaceholder: 'أدخل المبلغ بالجنيه السوداني',
+  amountPlaceholder: 'دخل المبلغ بالجنيه السوداني',
   category: 'نوع الجريمة',
   excuse: 'العذر الشين',
   excusePlaceholder: 'اكتب عذرك هنا... (اختياري)',
