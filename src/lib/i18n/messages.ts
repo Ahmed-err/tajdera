@@ -76,7 +76,7 @@ export const messages: MessageSet = {
   deleteSin: 'حذف',
   deleteConfirm: 'تحذف البلوة ده؟',
   resetConfirm: 'تصفّر كل الحساب؟ الفضائح كلها حتطير!',
-  confirmYes: 'آه، امسح',
+  confirmYes: 'امسح ياخ',
   confirmNo: 'لا، استنّي',
   sinAdded: '✓ تسجّل البلوة',
   errorAmount: 'لازم تكتب مبلغ صحيح أكبر من صفر',
