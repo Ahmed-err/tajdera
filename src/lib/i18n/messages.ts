@@ -74,7 +74,7 @@ export const messages: MessageSet = {
   statusTitle: 'الحالة الاجتماعية للجيب',
   sinCount: 'بلوة',
   deleteSin: 'حذف',
-  deleteConfirm: 'تحذف البلوة ده؟',
+  deleteConfirm: 'تحذف البلوة دي؟',
   resetConfirm: 'تصفّر كل الحساب؟ الفضائح كلها حتطير!',
   confirmYes: 'امسح ياخ',
   confirmNo: 'لا، استنّي',
